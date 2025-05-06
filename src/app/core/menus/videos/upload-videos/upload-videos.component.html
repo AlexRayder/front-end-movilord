@@ -1,0 +1,11 @@
+<div class="upload-container">
+    <h2>Subir Video</h2>
+    <!-- Input para el título -->
+    <input type="text" [(ngModel)]="videoTitle" placeholder="Título del video">
+
+    <!-- Input para seleccionar el video -->
+    <input type="file" (change)="onFileSelected($event)" accept="video/*">
+
+    <!-- Botón para subir el video -->
+    <button (click)="onUpload()">Subir video</button>
+  </div>

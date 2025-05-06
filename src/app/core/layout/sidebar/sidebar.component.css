@@ -1,0 +1,333 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body{
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-sidebar);
+}
+
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px;
+    height: 100%;
+    padding: 20px 15px;
+    background-color: var(--color-sidebar);
+    color: var(--color-text);
+    transition: 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 0 10px 2px rgb(255, 0, 0); /* inicial */
+    animation: borderNeonGlow 5s linear infinite;
+}
+
+@keyframes borderNeonGlow {
+    0% {
+        border-color: rgb(255, 0, 0);
+        box-shadow: 0 0 10px 2px rgb(255, 0, 0);
+    }
+    25% {
+        border-color: rgb(0, 255, 0);
+        box-shadow: 0 0 10px 2px rgb(0, 255, 0);
+    }
+    50% {
+        border-color: rgb(0, 0, 255);
+        box-shadow: 0 0 10px 2px rgb(0, 0, 255);
+    }
+    75% {
+        border-color: rgb(255, 0, 255);
+        box-shadow: 0 0 10px 2px rgb(255, 0, 255);
+    }
+    100% {
+        border-color: rgb(255, 0, 0);
+        box-shadow: 0 0 10px 2px rgb(255, 0, 0);
+    }
+}
+
+
+.mini-sidebar{
+    width: 80px;
+}
+
+.sidebar span{
+    width: 100px;
+    white-space: nowrap;
+    font-size: 18px;
+    text-align: left;
+    opacity: 1;
+    transition: 0.5s ease;
+}
+
+.sidebar span.oculto{
+    opacity: 0;
+    width: 0;
+}
+
+/* Name Page */
+
+.sidebar .name-page{
+    width: 100%;
+    height: 45px;
+    color: var(--color-text);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .name-page mat-icon{
+    min-width: 50px;
+    height: 45px;
+    font-size: 40px;
+    align-items: center;
+    text-align: center;
+    display: grid;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.sidebar .name-page mat-icon:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.sidebar .name-page span{
+    margin-left: 5px;
+    font-size: 25px;
+}
+
+/* Button */
+
+.sidebar .button{
+    width: 100%;
+    height: 45px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--color-button);
+    color: var(--color-button-text);
+}
+
+.sidebar .button mat-icon{
+    min-width: 50px;
+    font-size: 20px;
+    align-items: center;
+    text-align: center;
+    display: grid;
+}
+
+/* Menu Navigate */
+
+.sidebar .navigation{
+    height: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.sidebar .navigation::-webkit-scrollbar{
+    width: 5px;
+}
+
+.sidebar .navigation::-webkit-scrollbar-thumb{
+    background-color: var(--color-scroll);
+    border-radius: 5px;
+}
+
+.sidebar .navigation::-webkit-scrollbar-thumb:hover{
+    background-color: var(--color-scroll-hover);
+}
+
+.sidebar .navigation li{
+    list-style: none;
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.sidebar .navigation a{
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    color: var(--color-text-menu);
+}
+
+.sidebar .navigation a:hover{
+    background-color:var(--color-menu-hover);
+    color: var(--color-menu-hover-text);
+}
+
+.sidebar .navigation mat-icon{
+    min-width: 47px;
+    font-size: 20px;
+    align-items: center;
+    text-align: center;
+    display: grid;
+}
+
+/* line */
+
+.sidebar .line{
+    width: 100%;
+    height: 3px;
+    margin-top: 15px;
+    background-color: var(--color-line);
+}
+
+/* Dark Mode */
+
+.sidebar .dark-mode{
+    width: 100%;
+    margin-bottom: 80px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar .dark-mode .info{
+    width: 150px;
+    height: 45px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: #868890;
+}
+
+
+.sidebar .dark-mode mat-icon{
+    min-width: 47px;
+    font-size: 20px;
+    align-items: center;
+    text-align: center;
+    display: grid;
+}
+
+/* Switch */
+
+.sidebar .dark-mode .switch{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    height: 45px;
+    cursor: pointer;
+}
+
+.sidebar .dark-mode .base{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 35px;
+    height: 20px;
+    background-color: var(--color-switch-base);
+    border-radius: 50px;
+}
+
+.sidebar .dark-mode .circle{
+    position: absolute;
+    width: 18px;
+    height: 90%;
+    background-color: var(--color-switch-circle);
+    border-radius: 50%;
+    left: 2px;
+    transition: left 0.5s ease;
+}
+
+/* User Perfil */
+
+.sidebar .user {
+    width: 100%;
+    display: flex;
+    margin-top: auto; /* ✅ esto lo empuja al fondo */
+}
+
+.sidebar .user img {
+    width: 50px;
+    height: 50px; 
+    border-radius: 10px; 
+    object-fit: cover; 
+}
+
+.sidebar .user .info-user{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-text);
+    overflow: hidden;
+}
+
+.sidebar .user .name-email{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+
+.sidebar .user .name{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.sidebar .user .email{
+    font-size: 13px;
+}
+
+.sidebar .user mat-icon{
+    font-size: 20px;
+}
+
+.sidebar .user .more-vert {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: auto; /* Esto empuja el contenido hacia la derecha */
+}
+
+.sidebar .user .more-vert button {
+    padding: 0;
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+}
+
+.sidebar .user .more-vert mat-icon{
+    color: var(--color-more-vert);
+}
+
+/* Responsive */
+
+@media  (max-height : 600px) {
+
+    .sidebar .name-page{
+        margin-bottom: 5px;
+    }
+
+    .sidebar .dark-mode{
+        margin-bottom: 3px;
+    }
+    
+}
+
+@media  (max-width : 600px) {
+    .sidebar{
+        position: absolute;
+        left: -250px;
+    }
+}

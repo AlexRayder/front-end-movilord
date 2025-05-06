@@ -1,0 +1,14 @@
+<div class="container">
+ 
+  <!-- Galería de videos -->
+  <div class="video-gallery">
+    <div *ngFor="let video of videos" class="video-card">
+      <video width="320" height="240" controls>
+        <source [src]="'http://localhost:3000' + video.videoUrl" type="video/mp4" />
+        Tu navegador no soporta el video.
+      </video>
+      <p>{{ video.title }}</p> <!-- Aquí puedes mostrar el título del video -->
+      <p>Subido por: {{ video.user?.username }}</p> <!-- Aquí mostrar el nombre del usuario que subió el video -->
+    </div>
+  </div>
+</div>

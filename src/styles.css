@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+:root {
+  --color-sidebar: rgb(252, 255, 255);
+  --color-text: rgb(0, 0, 0);
+  --color-text-menu: rgb(134, 136, 144);
+  --color-menu-hover: rgb(238, 238, 238);
+  --color-menu-hover-text: rgb(0, 0, 0);
+  --color-button: rgb(0, 0, 0);
+  --color-button-text: rgb(255, 255, 255);
+  --color-line: rgb(180, 180, 180);
+  --color-switch-base: rgb(201, 202, 206);
+  --color-switch-circle: rgb(241, 241, 241);
+  --color-scroll: rgb(192, 192, 192);
+  --color-scroll-hover: rgb(134, 134, 134);
+  --color-more-vert: rgb(0, 0, 0);
+  --color-text-account: rgb(0, 0, 0);
+}
+
+/* Modo oscuro */
+.dark-mode-active {
+  --color-sidebar: rgb(44, 45, 49);
+  --color-text: rgb(255, 255, 255);
+  --color-text-menu: rgb(110, 110, 117);
+  --color-menu-hover: rgb(0, 0, 0);
+  --color-menu-hover-text: rgb(238, 238, 238);
+  --color-button: rgb(255, 255, 255);
+  --color-button-text: rgb(0, 0, 0);
+  --color-line: rgb(90, 90, 90);
+  --color-switch-base: rgb(39, 205, 4);
+  --color-switch-circle: rgb(255, 255, 255);
+  --color-scroll: rgb(68, 68, 74);
+  --color-scroll-hover: rgb(85, 85, 85);
+  --color-more-vert: rgb(255, 255, 255);
+  --color-text-account: rgb(0, 0, 0);
+}

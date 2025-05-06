@@ -1,0 +1,82 @@
+<div class="body">
+    <div class="container" [ngClass]="{'active': !isLoginActive}">
+      <div class="curved-shape"></div>
+      <div class="curved-shape2"></div>
+  
+      <!-- Login Form -->
+      <div class="form-box Login">
+        <h2 class="animation" style="--D:0; --S:21">Login</h2>
+        <form (ngSubmit)="onLogin()">
+          <div class="input-box animation" style="--D:1; --S:22">
+            <input id="username" [(ngModel)]="loginData.username" name="username" type="text" required />
+            <label>Username</label>
+            <mat-icon>person</mat-icon>
+          </div>
+          <div class="input-box animation" style="--D:2; --S:23">
+            <input id="password" [(ngModel)]="loginData.password" name="password" type="password" required />
+            <label>Password</label>
+            <mat-icon>visibility</mat-icon>
+          </div>
+          <div class="input-box animation" style="--D:3; --S:24">
+            <button class="btn" type="submit">Login</button>
+          </div>
+          <div class="regi-link animation" style="--D:4; --S:25">
+            <p>
+              Don't have an account? <a (click)="toggleForm()">Sign Up</a>
+            </p>
+          </div>
+        </form>
+      </div>
+      
+  
+
+<!-- Register Form -->
+<div class="form-box Register">
+  <h2 class="animation" style="--li:17; --S:0;">Register</h2>
+  <form (ngSubmit)="onRegister()">
+    <div class="input-box Register animation" style="--li:18; --S:1;">
+      <input id="username" [(ngModel)]="registerData.username" name="username" type="text" required />
+      <label>Username</label>
+      <mat-icon>person</mat-icon>
+    </div>
+    <div class="input-box Register animation" style="--li:19; --S:2;">
+      <input id="email" [(ngModel)]="registerData.email" name="email" type="email" required />
+      <label>Email</label>
+      <mat-icon>mail</mat-icon>
+    </div>
+    <div class="input-box Register animation" style="--li:20; --S:3;">
+      <input id="password" [(ngModel)]="registerData.password" name="password" [type]="viewPassword ? 'text' : 'password'" required />
+      <label>Password</label>
+    </div>
+    <div class="input-box Register animation" style="--li:21; --S:4;">
+      <input id="confirmPassword" [(ngModel)]="registerData.confirmPassword" name="confirmPassword" [type]="viewPassword ? 'text' : 'password'" required />
+      <label>Confirm Password</label>
+    </div>
+    <div class="input-box Register animation" style="--li:22; --S:5;">
+      <mat-checkbox (change)="togglePassword()">
+        <p>View Password</p>
+      </mat-checkbox>            
+    </div>
+    <div class="input-box Register animation" style="--li:23; --S:6;">
+      <button class="btn" type="submit">Register</button>
+    </div>
+    <div class="regi-link animation" style="--li:24; --S:7;">
+      <p>
+        Already have an account? <a (click)="toggleForm()">Sign In</a>
+      </p>
+    </div>
+  </form>
+</div>
+
+      
+      <div class="info-content Login">
+        <h2 class="animation" style="--D:0; --S:20">WELCOME BACK!</h2>
+        <p class="animation" style="--D:1; --S:21">Pochita, Pochita es el mejor multimedia</p>
+      </div>
+      <div class="info-content Register">
+        <h2 class="animation" style="--li:17; --S:0;">WELCOME BACK!</h2>
+        <p class="animation" style="--li:18; --S:1;">Pochita, Pochita es el mejor multimedia</p>
+      </div>
+    </div>
+  </div>
+  

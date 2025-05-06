@@ -1,0 +1,50 @@
+<form [formGroup]="accountForm" (ngSubmit)="onSubmit()" class="form-container">
+    <h2>{{ isEditing ? 'Actualizar cuenta' : 'Crear cuenta' }}</h2>
+    
+    <div class="form-field">
+      <label for="username">Username</label>
+      <!-- Usamos readonly para solo visualización -->
+      <input formControlName="username" id="username" type="text" placeholder="Ingresa tu username" [readonly]="isEditing" />
+    </div>
+    
+    <div class="form-field">
+      <label for="email">Email</label>
+      <!-- Usamos readonly para solo visualización -->
+      <input formControlName="email" id="email" type="email" placeholder="Ingresa tu email" [readonly]="isEditing" />
+    </div>
+    
+    <div class="form-field">
+      <label for="firstName">First Name</label>
+      <input formControlName="firstName" id="firstName" type="text" placeholder="Ingresa tu nombre" />
+    </div>
+    
+    <div class="form-field">
+      <label for="lastName">Last Name</label>
+      <input formControlName="lastName" id="lastName" type="text" placeholder="Ingresa tu apellido" />
+    </div>
+    
+    <div class="form-field">
+      <label for="phone">Phone</label>
+      <input formControlName="phone" id="phone" type="text" placeholder="Ingresa tu número de teléfono" />
+    </div>
+    
+    <div class="form-field">
+      <label for="profileImage">Imagen de perfil</label>
+      <div class="image-preview" (click)="triggerFileInput()">
+        <img *ngIf="profileImagePreview" [src]="profileImagePreview" alt="Imagen de perfil previa" />
+        <p *ngIf="!profileImagePreview">Haz clic aquí para seleccionar una imagen</p>
+      </div>
+      
+      <input #fileInput type="file" accept=".jpg, .jpeg, .png" (change)="onFileSelected($event)" style="display:none" />
+    </div>
+  
+    <div *ngIf="!isEditing" class="form-field">
+      <label for="password">Password</label>
+      <input formControlName="password" id="password" type="password" placeholder="Ingresa tu contraseña" />
+    </div>
+  
+    <button type="submit" class="submit-btn">
+      {{ isEditing ? 'Actualizar' : 'Crear cuenta' }}
+    </button>
+  </form>
+  

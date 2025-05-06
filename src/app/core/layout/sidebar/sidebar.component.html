@@ -1,0 +1,57 @@
+<div class="sidebar" [ngClass]="{ 'mini-sidebar': !menuOpen, 'dark-mode-active': isDarkMode }">
+  <div class="name-page">
+    <mat-icon id="menu" (click)="openMenu()">menu</mat-icon>
+    <span [ngClass]="{ 'oculto': !menuOpen }">MultiLord</span>
+  </div>
+
+  <nav class="navigation">
+    <ul>
+      <li *ngFor="let item of navigationItems">
+        <a [href]="item.route" routerLinkActive="active-link">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span [ngClass]="{ 'oculto': !menuOpen }">{{ item.label }}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="line"></div>
+
+  <div class="dark-mode" (click)="toggleDarkMode()">
+    <div class="info">
+      <mat-icon>dark_mode</mat-icon>
+      <span>Dark Mode</span>
+    </div>
+    <div class="switch">
+      <div class="base">
+        <div class="circle" [ngStyle]="{ left: isDarkMode ? '17px' : '2px' }"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="user">
+    <img [src]="userImage || 'img/default-user.png'" alt="User Image">
+    <div class="info-user">
+      <div class="name-email">
+        <span class="name" [ngClass]="{ 'oculto': !menuOpen }">{{ userName }}</span>
+        <span class="email" [ngClass]="{ 'oculto': !menuOpen }">{{ userEmail }}</span>     
+      </div>
+      <div class="more-vert">
+        <button mat-button [matMenuTriggerFor]="menu" class="more-options-btn">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item *ngFor="let item of navigationMenuAccount" [routerLink]="item.route">
+            <mat-icon>{{ item.icon }}</mat-icon>
+            <span>{{ item.label }}</span>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Cerrar sesión</span>
+          </button>
+        </mat-menu>
+      </div>
+      
+    </div>
+  </div>
+</div>
