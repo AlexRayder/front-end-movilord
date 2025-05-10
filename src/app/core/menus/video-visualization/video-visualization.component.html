@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="main-content">
+    <!-- Sección izquierda: video + info -->
+    <div class="video-column" *ngIf="video">
+      <div class="video-player">
+        <video controls>
+          <source
+            [src]="'http://localhost:3000' + video.videoUrl"
+            type="video/mp4"
+          />
+          Tu navegador no soporta la reproducción de video.
+        </video>
+      </div>
+      <div class="video-info">
+        <h2>{{ video.title }}</h2>
+        <div class="user-info">
+          <img
+            class="user-logo"
+            [src]="video.user?.profileImage"
+            alt="Logo de Usuario"
+          />
+          <p>{{ video.user?.username }}</p>
+        </div>
+        <div class="video-details">
+          <p>
+            <strong>{{ video.views }} vistas</strong>
+          </p>
+        </div>
+        <p><strong>Descripción:</strong> {{ video.description }}</p>
+        <div class="like-dislike-buttons">
+          <button
+            (click)="toggleLike()"
+            [ngClass]="{ 'active-like': hasLiked }"
+          >
+            👍 {{ video.likes }} <span *ngIf="hasLiked"></span>
+          </button>
+
+          <button
+            (click)="toggleDislike()"
+            [ngClass]="{ 'active-dislike': hasDisliked }"
+          >
+            👎 {{ video.dislikes }} <span *ngIf="hasDisliked"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección derecha: otros videos -->
+    <div class="related-videos">
+      <div class="other-videos">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/M3CbRJ6jgQc?si=TkB9bGjLp0DHK2GC"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/M3CbRJ6jgQc?si=TkB9bGjLp0DHK2GC"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comentarios abajo -->
+  <div class="comments-section" *ngIf="video">
+    <div class="comment-input">
+    <input [(ngModel)]="newComment" placeholder="Agregar un comentario..." />
+    <button (click)="addComment()">Comentar</button>
+  </div>
+  <h3>Comentarios</h3>
+  
+  <div class="user-comment" *ngFor="let comment of video.comments">
+    <div class="user">
+      <img
+        class="user-logo"
+        [src]="comment.user?.profileImage"
+        alt="Logo de Usuario"
+      />
+      <div>
+        <span>{{ comment.user.username}}</span>
+        <h2>{{ comment.content }}</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

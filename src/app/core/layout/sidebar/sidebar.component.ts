@@ -71,7 +71,7 @@ export class SidebarComponent implements OnInit {
 
   navigationItems = [
     { icon: 'home', label: 'Home', route: 'dashboard' },
-    { icon: 'rocket_launch', label: 'Rocket', route: 'history' },
+    { icon: 'rocket_launch', label: 'Rocket', route: 'video' },
     { icon: 'shop', label: 'Shop', route: 'improve' },
     { icon: 'play_for_work', label: 'Play Work', route: 'improve' },
     { icon: 'sports_esports', label: 'Sport', route: 'improve' },

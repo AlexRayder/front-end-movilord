@@ -21,6 +21,7 @@ html, body {
   --color-scroll-hover: rgb(134, 134, 134);
   --color-more-vert: rgb(0, 0, 0);
   --color-text-account: rgb(0, 0, 0);
+  --color-background-videos: rgb(241, 241, 241);
 }
 
 /* Modo oscuro */
@@ -39,4 +40,5 @@ html, body {
   --color-scroll-hover: rgb(85, 85, 85);
   --color-more-vert: rgb(255, 255, 255);
   --color-text-account: rgb(0, 0, 0);
+  --color-background-videos: rgb(53, 53, 53);
 }

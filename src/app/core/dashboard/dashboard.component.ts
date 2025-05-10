@@ -2,27 +2,40 @@ import { Component } from '@angular/core';
 import { VideoService } from '../service/video.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule],
 })
 export class DashboardComponent {
-  selectedFile: File | null = null;  // Permitir null como valor válido
-  videoTitle: string = '';  // Variable para el título del video
   videos: any[] = [];
+  selectedQuality: { [videoId: number]: string } = {};
 
-  // Al iniciar el componente, obtenemos los videos
+  constructor(private videoService: VideoService, private router: Router) {}
+
   ngOnInit() {
     this.videoService.getVideos().subscribe((data: any[]) => {
-      this.videos = data;
+      this.videos = data.filter(
+        (video) => video.visibility?.name === 'Público'
+      );
     });
   }
 
-  constructor(private videoService: VideoService) {}
+  playPreview(video: HTMLVideoElement) {
+    video.currentTime = 0;
+    video.play();
+  }
 
+  resetPreview(video: HTMLVideoElement) {
+    video.pause();
+    video.currentTime = 0;
+  }
 
-
+  goToVideo(videoId: number) {
+    // Navegamos directamente con el videoId (sin codificar)
+    this.router.navigate(['/video', videoId]);
+  }
 }

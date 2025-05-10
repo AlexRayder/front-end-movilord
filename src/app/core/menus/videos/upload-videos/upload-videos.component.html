@@ -1,11 +1,17 @@
 <div class="upload-container">
-    <h2>Subir Video</h2>
-    <!-- Input para el título -->
-    <input type="text" [(ngModel)]="videoTitle" placeholder="Título del video">
+  <h2>Subir Video</h2>
 
-    <!-- Input para seleccionar el video -->
-    <input type="file" (change)="onFileSelected($event)" accept="video/*">
+  <input type="text" [(ngModel)]="videoTitle" placeholder="Título del video" required>
+  <input type="file" (change)="onFileSelected($event)" accept="video/*" required>
+  <input type="file" (change)="onThumbnailSelected($event)" accept="image/*">
 
-    <!-- Botón para subir el video -->
-    <button (click)="onUpload()">Subir video</button>
-  </div>
+  <!-- Visibilidad del video -->
+  <select [(ngModel)]="videoVisibility" required>
+    <option value="" disabled selected>Selecciona visibilidad</option>
+    <option value="publico">Público</option>
+    <option value="privado">Privado</option>
+    <option value="no_listado">No listado</option>
+  </select>
+
+  <button (click)="onUpload()" [disabled]="!selectedFile || !videoTitle.trim()">Subir Video</button>
+</div>
