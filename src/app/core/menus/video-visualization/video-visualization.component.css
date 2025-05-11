@@ -259,3 +259,22 @@
 .active-dislike {
   color: red;
 }
+
+.subscribe-button {
+  margin-top: 10px;
+}
+
+.subscribe-button button {
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.subscribe-button button:hover {
+  background-color: #a80000;
+}

@@ -7,8 +7,8 @@ import { HistoryComponent } from './core/menus/history/history.component';
 import { AccountComponent } from './core/menus/account/account.component';
 import { ImproveSectionComponent } from './core/menus/improve-section/improve-section.component';
 import { UploadContentComponent } from './core/menus/videos/upload-content/upload-content.component';
-import { UploadVideosComponent } from './core/menus/videos/upload-videos/upload-videos.component';
 import { VideoVisualizationComponent } from './core/menus/video-visualization/video-visualization.component';
+import { ViewLordChannelComponent } from './core/menus/view-lord-channel/view-lord-channel.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -23,6 +23,7 @@ export const routes: Routes = [
       { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
       { path: 'improve', component: ImproveSectionComponent, canActivate: [AuthGuard] },
       { path: 'upload', component: UploadContentComponent, canActivate: [AuthGuard] },
+      { path: 'view-channel', component: ViewLordChannelComponent, canActivate: [AuthGuard] },
     ]
   },
   { path: '**', redirectTo: 'login' }

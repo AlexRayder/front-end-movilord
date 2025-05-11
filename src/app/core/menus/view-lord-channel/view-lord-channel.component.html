@@ -1,0 +1,36 @@
+<!-- Banner del canal con botón para subir -->
+<div class="channel-banner" [ngStyle]="{ 'background-image': 'url(' + channelUser?.bannerImage + ')' }">
+  <label class="upload-banner-btn" for="bannerInput">
+    <mat-icon>file_upload</mat-icon>
+  </label>
+  <input type="file" id="bannerInput" (change)="onBannerSelected($event)" hidden />
+</div>
+<!-- Info del canal -->
+<div class="channel-info" *ngIf="channelUser && videos">
+  <img class="channel-avatar" [src]="channelUser.profileImage" alt="Avatar del canal" />
+  <div class="user-info">
+    <h2>{{ channelUser.username }}</h2>
+    <p><strong>{{ channelUser.totalSubscribers }} suscriptores</strong></p>
+  </div>
+</div>
+
+<!-- Lista de videos -->
+<div class="video-grid">
+  <div class="video-card" *ngFor="let video of videos">
+    <div class="video-player">
+      <video controls preload="metadata">
+        <source [src]="getFullVideoUrl(video.videoUrl)" type="video/mp4" />
+        Tu navegador no soporta la reproducción de video.
+      </video>
+    </div>
+    <div class="video-info">
+      <h3>{{ video.title }}</h3>
+      <p>{{ video.description }}</p>
+      <div class="video-meta">
+        <span>{{ video.createdAt | date:'short' }}</span> •
+        <span>{{ video.likes }} me gusta</span> •
+        <span>{{ video.totalViews }} vistas</span>
+      </div>
+    </div>
+  </div>
+</div>
