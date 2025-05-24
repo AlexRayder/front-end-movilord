@@ -131,6 +131,7 @@
   font-size: 18px;
   transform: translateY(-50%);
   transition: 0.5s;
+  z-index: 20px;
 }
 
 .input-box input:focus ~ mat-icon,

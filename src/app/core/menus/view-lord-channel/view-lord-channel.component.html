@@ -1,36 +1,117 @@
+
+<div class="container">
 <!-- Banner del canal con botón para subir -->
-<div class="channel-banner" [ngStyle]="{ 'background-image': 'url(' + channelUser?.bannerImage + ')' }">
+<div
+  class="channel-banner"
+  [ngStyle]="{ 'background-image': 'url(' + channelUser?.bannerImage + ')' }"
+>
   <label class="upload-banner-btn" for="bannerInput">
     <mat-icon>file_upload</mat-icon>
   </label>
-  <input type="file" id="bannerInput" (change)="onBannerSelected($event)" hidden />
+  <input
+    type="file"
+    id="bannerInput"
+    (change)="onBannerSelected($event)"
+    hidden
+  />
 </div>
 <!-- Info del canal -->
 <div class="channel-info" *ngIf="channelUser && videos">
-  <img class="channel-avatar" [src]="channelUser.profileImage" alt="Avatar del canal" />
+  <img
+    class="channel-avatar"
+    [src]="channelUser.profileImage"
+    alt="Avatar del canal"
+  />
   <div class="user-info">
     <h2>{{ channelUser.username }}</h2>
-    <p><strong>{{ channelUser.totalSubscribers }} suscriptores</strong></p>
+    <p>
+      <strong>{{ channelUser.totalSubscribers }} suscriptores</strong>
+    </p>
   </div>
 </div>
 
-<!-- Lista de videos -->
-<div class="video-grid">
-  <div class="video-card" *ngFor="let video of videos">
-    <div class="video-player">
-      <video controls preload="metadata">
-        <source [src]="getFullVideoUrl(video.videoUrl)" type="video/mp4" />
-        Tu navegador no soporta la reproducción de video.
-      </video>
-    </div>
-    <div class="video-info">
-      <h3>{{ video.title }}</h3>
-      <p>{{ video.description }}</p>
-      <div class="video-meta">
-        <span>{{ video.createdAt | date:'short' }}</span> •
-        <span>{{ video.likes }} me gusta</span> •
-        <span>{{ video.totalViews }} vistas</span>
+<mat-tab-group  class="app-tabs">
+  <!-- Principal -->
+  <mat-tab label="Principal">
+    <div class="section">
+      <!-- 🟢 Video destacado -->
+      <div class="highlighted-video" *ngIf="highlightedVideo">
+        <h3>Video Destacado</h3>
+        <video controls width="30%">
+          <source
+            [src]="getFullVideoUrl(highlightedVideo.videoUrl)"
+            type="video/mp4"
+          />
+          Tu navegador no soporta el video.
+        </video>
+        <h4>{{ highlightedVideo.title }}</h4>
+      </div>
+
+      <!-- 🟡 Para ti -->
+      <div class="for-you-section" *ngIf="videos.length > 0">
+        <h3>Para ti</h3>
+        <div class="video-grid">
+          <ng-container *ngFor="let video of videos">
+            <div class="video-card">
+              <video controls>
+                <source
+                  [src]="getFullVideoUrl(video.videoUrl)"
+                  type="video/mp4"
+                />
+              </video>
+              <h4>{{ video.title }}</h4>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <!-- 🔵 Todos los videos -->
+      <div class="all-videos-section">
+        <h3>Videos</h3>
+        <div class="video-grid">
+          <ng-container *ngFor="let video of videos">
+            <div class="video-card">
+              <video controls>
+                <source
+                  [src]="getFullVideoUrl(video.videoUrl)"
+                  type="video/mp4"
+                />
+              </video>
+              <h4>{{ video.title }}</h4>
+            </div>
+          </ng-container>
+        </div>
       </div>
     </div>
-  </div>
+  </mat-tab>
+
+  <!-- Videos -->
+  <mat-tab label="Videos">
+    <div class="video-grid">
+      <ng-container *ngFor="let video of videosSortedByDate">
+        <div class="video-card">
+          <video controls>
+            <source [src]="getFullVideoUrl(video.videoUrl)" type="video/mp4" />
+          </video>
+          <h4>{{ video.title }}</h4>
+          <small>{{ video.createdAt | date : "short" }}</small>
+        </div>
+      </ng-container>
+    </div>
+  </mat-tab>
+
+  <!-- En Vivo -->
+  <mat-tab label="En Vivo">
+    <div class="video-grid">
+      <ng-container *ngFor="let video of liveSavedVideos">
+        <div class="video-card">
+          <video controls>
+            <source [src]="getFullVideoUrl(video.videoUrl)" type="video/mp4" />
+          </video>
+          <h4>{{ video.title }}</h4>
+        </div>
+      </ng-container>
+    </div>
+  </mat-tab>
+</mat-tab-group>
 </div>

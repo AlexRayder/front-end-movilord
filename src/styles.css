@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -22,6 +23,7 @@ html, body {
   --color-more-vert: rgb(0, 0, 0);
   --color-text-account: rgb(0, 0, 0);
   --color-background-videos: rgb(241, 241, 241);
+  --color-backgounds-channel: rgb(252, 255, 255);
 }
 
 /* Modo oscuro */
@@ -41,4 +43,5 @@ html, body {
   --color-more-vert: rgb(255, 255, 255);
   --color-text-account: rgb(0, 0, 0);
   --color-background-videos: rgb(53, 53, 53);
+    --color-backgounds-channel: rgb(50, 51, 53);
 }
